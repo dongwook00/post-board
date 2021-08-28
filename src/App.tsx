@@ -3,6 +3,7 @@ import Container from './layout/Container';
 import BoardList from './layout/BoardList';
 import Board from './layout/Board';
 import List from './components/List';
+import Notes from './components/Notes';
 
 const App: React.FC = () => {
   return (
@@ -10,7 +11,9 @@ const App: React.FC = () => {
       <BoardList>
         <List />
       </BoardList>
-      <Board>{/* <Notes /> */}</Board>
+      <Board>
+        <Notes />
+      </Board>
     </Container>
   );
 };
