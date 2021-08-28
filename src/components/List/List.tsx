@@ -1,22 +1,14 @@
 import React from 'react';
+import { useAppSelector, useAppDispatch } from '../../redux/hooks';
+import { selectBoard } from '../../redux/listSlice';
 import styles from './List.module.scss';
 
-interface List {
-  id: number;
-  name: string;
-}
-
-const list: List[] = [
-  { id: 0, name: 'list 1' },
-  { id: 1, name: 'list 2' },
-  { id: 2, name: 'list 3' },
-  { id: 3, name: 'list 4' },
-  { id: 4, name: 'list 5' },
-];
-
 export const List: React.FC = () => {
+  const list = useAppSelector((state) => state.list);
+  const dispatch = useAppDispatch();
+
   const onListClick = (id: number) => {
-    console.log('clicked', id);
+    dispatch(selectBoard(id));
   };
 
   return (
