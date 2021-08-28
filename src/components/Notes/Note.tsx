@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './Note.module.scss';
 import Button from './Button';
-import NoteTitle from './NoteTitle';
+import { EditableTitle } from '../common';
 import NoteContent from './NoteContent';
 
 interface NoteProps {
@@ -39,7 +39,7 @@ const Note: React.FC<NoteProps> = (props) => {
   return (
     <div className={styles.note}>
       <div className={styles.title}>
-        <NoteTitle value={title} onChange={onTitleChange} />
+        <EditableTitle className="noteTitle" value={title} onChange={onTitleChange} />
         <Button text="&#x02212;" />
         <Button text="&#x02A2F;" />
       </div>

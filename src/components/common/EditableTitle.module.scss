@@ -1,0 +1,17 @@
+.editableTitle {
+  border: none;
+  outline: none;
+  padding: .5rem 1.5rem;
+}
+
+.noteTitle {
+  background-color: var(--color-note-header);
+  width: 100%;
+}
+
+.boardTitle {
+  background-color: var(--color-board-title);
+  font-size: inherit;
+  font-weight: inherit;
+  width: 50%;
+}
