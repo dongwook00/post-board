@@ -3,7 +3,7 @@ import styles from './EditableTitle.module.scss';
 
 interface EditableTitleProps {
   className: string;
-  value: string;
+  value?: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -13,3 +13,8 @@ const EditableTitle: React.FC<EditableTitleProps> = (props) => {
 };
 
 export default EditableTitle;
+
+EditableTitle.defaultProps = {
+  className: '',
+  value: '',
+};

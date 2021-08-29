@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface NotesState {
+export interface NotesState {
   id: number;
   boardId?: number;
   title: string;
@@ -10,7 +10,9 @@ interface NotesState {
 const initialState: NotesState[] = [
   { id: 0, boardId: 0, title: 'hello world', content: 'this is note from board 0' },
   { id: 1, boardId: 0, title: 'post it', content: 'this is note from board 1' },
-  { id: 10, boardId: 1, title: 'hello world', content: 'this is note from board 0' },
+  { id: 2, boardId: 1, title: 'hello world', content: 'this is note from board 0' },
+  { id: 3, boardId: 1, title: 'hello world', content: 'this is note from board 0' },
+  { id: 4, boardId: 2, title: 'hello world', content: 'this is note from board 0' },
 ];
 
 export const notesSlice = createSlice({

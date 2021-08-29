@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAppSelector, useAppDispatch } from '../../redux/hooks';
-import { selectBoard } from '../../redux/listSlice';
+import { selectBoard } from '../../redux/boardSlice';
 import styles from './List.module.scss';
 
 export const List: React.FC = () => {

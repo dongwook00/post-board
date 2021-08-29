@@ -5,10 +5,12 @@ import logger from 'redux-logger';
 import { combineReducers } from 'redux';
 import listReducer from './listSlice';
 import notesReducer from './notesSlice';
+import boardReducer from './boardSlice';
 
 const reducers = combineReducers({
   list: listReducer,
   notes: notesReducer,
+  board: boardReducer,
 });
 
 const persistConfig = {
