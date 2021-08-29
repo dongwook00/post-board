@@ -18,8 +18,7 @@ export const listSlice = createSlice({
   initialState,
   reducers: {
     selectBoard: (state, action: PayloadAction<number>) => {
-      console.log('action', state, action);
-      return state;
+      state[0].name = String(action.payload);
     },
   },
 });

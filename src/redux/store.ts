@@ -1,14 +1,26 @@
 import { configureStore } from '@reduxjs/toolkit';
+import storage from 'redux-persist/lib/storage';
+import { persistReducer } from 'redux-persist';
 import logger from 'redux-logger';
+import { combineReducers } from 'redux';
 import listReducer from './listSlice';
 import notesReducer from './notesSlice';
 
+const reducers = combineReducers({
+  list: listReducer,
+  notes: notesReducer,
+});
+
+const persistConfig = {
+  key: 'root',
+  storage,
+};
+
+const persistedReducer = persistReducer(persistConfig, reducers);
+
 export const store = configureStore({
-  reducer: {
-    list: listReducer,
-    notes: notesReducer,
-  },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }).concat(logger),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
