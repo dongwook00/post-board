@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAppSelector, useAppDispatch } from '../../redux/hooks';
 import { selectBoard } from '../../redux/boardSlice';
+import { addNewBoard } from '../../redux/listSlice';
 import styles from './List.module.scss';
 
 export const List: React.FC = () => {
@@ -11,6 +12,10 @@ export const List: React.FC = () => {
     dispatch(selectBoard(id));
   };
 
+  const onNewBoardCreateBtn = () => {
+    dispatch(addNewBoard());
+  };
+
   return (
     <ul className={styles.items}>
       {list.map((item) => (
@@ -18,6 +23,7 @@ export const List: React.FC = () => {
           {item.name}
         </li>
       ))}
+      <li onClick={onNewBoardCreateBtn}>+</li>
     </ul>
   );
 };

@@ -3,5 +3,12 @@
     margin-left: 3rem;
     padding: 1rem;
     cursor: pointer;
+
+    &:last-of-type {
+      list-style: none;
+      font-size: 3rem;
+      font-weight: 700;
+      text-align: center;
+    }
   }
 }

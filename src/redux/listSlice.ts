@@ -18,9 +18,16 @@ export const listSlice = createSlice({
   initialState,
   reducers: {
     updateBoardTitle: (state, action: PayloadAction<ListState>) => {
-      state[action.payload.id].name = action.payload.name;
+      const targetIndex = state.findIndex((el) => el.id === action.payload.id);
+      state[targetIndex].name = action.payload.name;
+    },
+    addNewBoard: (state) => {
+      const newId = state.length + 1;
+      state.push({ id: newId, name: '' });
     },
   },
 });
-export const { updateBoardTitle } = listSlice.actions;
+
+export const { updateBoardTitle, addNewBoard } = listSlice.actions;
+
 export default listSlice.reducer;

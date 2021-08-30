@@ -11,7 +11,15 @@ interface EditableTitleProps {
 const EditableTitle: React.FC<EditableTitleProps> = (props) => {
   const { className, value, onChange } = props;
 
-  return <input className={classnames(styles.editableTitle, styles[className])} type="text" value={value} onChange={onChange} />;
+  return (
+    <input
+      placeholder="제목을 입력해주세요"
+      className={classnames(styles.editableTitle, styles[className])}
+      type="text"
+      value={value}
+      onChange={onChange}
+    />
+  );
 };
 
 export default EditableTitle;

@@ -49,8 +49,8 @@ const Note: React.FC<NoteProps> = (props) => {
     <div className={styles.note}>
       <div className={styles.title}>
         <EditableTitle className="noteTitle" value={title} onChange={onTitleChange} />
-        <Button text={props.isFold ? '&#x0002B;' : '&#x02212;'} onClick={() => onToggleFoldBtnClick(props.noteId)} />
-        <Button text="&#x02A2F;" />
+        <Button text={props.isFold ? '+' : '−'} onClick={() => onToggleFoldBtnClick(props.noteId)} />
+        <Button text="⨯" />
       </div>
       <div className={classnames(styles.content, { [styles.hide]: props.isFold })}>
         <NoteContent value={content} onChange={onContentChange} />
