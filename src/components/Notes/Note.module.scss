@@ -2,6 +2,10 @@
   width: 30rem;
 }
 
+.note:not(:last-of-type) {
+  margin-bottom: 3rem;
+}
+
 .title {
   display: flex;
   width: 100%;
@@ -10,4 +14,8 @@
 .content {
   width: 100%;
   position: relative;
+
+  &.hide {
+    display: none;
+  }
 }

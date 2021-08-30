@@ -1,16 +1,21 @@
 import React, { useState } from 'react';
+import classnames from 'classnames';
 import styles from './Note.module.scss';
 import Button from './Button';
 import { EditableTitle } from '../common';
 import NoteContent from './NoteContent';
+import { useAppDispatch } from '../../redux/hooks';
+import { toggleFoldingNote } from '../../redux/notesSlice';
 
 interface NoteProps {
   noteId: number;
   title: string;
   content: string;
+  isFold: boolean;
 }
 
 const Note: React.FC<NoteProps> = (props) => {
+  const dispatch = useAppDispatch();
   const [isOnEdit, setIsOnEdit] = useState(false);
   const [title, setTitle] = useState(props.title);
   const [content, setContent] = useState(props.content);
@@ -36,18 +41,22 @@ const Note: React.FC<NoteProps> = (props) => {
     setContent(props.content);
   };
 
+  const onToggleFoldBtnClick = (noteId: number) => {
+    dispatch(toggleFoldingNote({ noteId }));
+  };
+
   return (
     <div className={styles.note}>
       <div className={styles.title}>
         <EditableTitle className="noteTitle" value={title} onChange={onTitleChange} />
-        <Button text="&#x02212;" />
+        <Button text={props.isFold ? '&#x0002B;' : '&#x02212;'} onClick={() => onToggleFoldBtnClick(props.noteId)} />
         <Button text="&#x02A2F;" />
       </div>
-      <div className={styles.content}>
+      <div className={classnames(styles.content, { [styles.hide]: props.isFold })}>
         <NoteContent value={content} onChange={onContentChange} />
         {isOnEdit && (
           <>
-            <Button className="save" text="저장" onClick={onSave.bind(null, props.noteId)} />
+            <Button className="save" text="저장" onClick={() => onSave(props.noteId)} />
             <Button className="cancel" text="취소" onClick={onCancle} />
           </>
         )}
