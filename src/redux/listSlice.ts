@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface ListState {
   id: number;
@@ -16,7 +16,11 @@ const initialState: ListState[] = [
 export const listSlice = createSlice({
   name: 'list',
   initialState,
-  reducers: {},
+  reducers: {
+    updateBoardTitle: (state, action: PayloadAction<ListState>) => {
+      state[action.payload.id].name = action.payload.name;
+    },
+  },
 });
-
+export const { updateBoardTitle } = listSlice.actions;
 export default listSlice.reducer;

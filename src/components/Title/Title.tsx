@@ -1,9 +1,8 @@
-// import { useState } from 'react';
 import { createSelector } from 'reselect';
-import { useAppSelector } from '../../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { EditableTitle } from '../common';
 import { RootState } from '../../redux/store';
-import { ListState } from '../../redux/listSlice';
+import { ListState, updateBoardTitle } from '../../redux/listSlice';
 import { BoardState } from '../../redux/boardSlice';
 import styles from './Title.module.scss';
 
@@ -14,17 +13,17 @@ const listSelector = createSelector(
 );
 
 const Title: React.FC = () => {
-  // const [title, setTitle] = useState('board title');
+  const dispatch = useAppDispatch();
   const list = useAppSelector(listSelector);
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // setTitle(e.target.value);
-    console.log(e.target);
+  const onBoardTitleChange = (e: React.ChangeEvent<HTMLInputElement>, targetId: number) => {
+    const payload = { id: targetId, name: e.target.value };
+    dispatch(updateBoardTitle(payload));
   };
 
   return (
     <h2 className={styles.title}>
-      <EditableTitle className="boardTitle" value={list?.name} onChange={onChange} />
+      {list && <EditableTitle className="boardTitle" value={list.name} onChange={(e) => onBoardTitleChange(e, list.id)} />}
     </h2>
   );
 };
