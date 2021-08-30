@@ -23,11 +23,15 @@ export const listSlice = createSlice({
     },
     addNewBoard: (state) => {
       const newId = state.length + 1;
-      state.push({ id: newId, name: '' });
+      state.push({ id: newId, name: '새 보드' });
+    },
+    removeBoard: (state, action: PayloadAction<{ targetId: number }>) => {
+      const targetIndex = state.findIndex((el) => el.id === action.payload.targetId);
+      state.splice(targetIndex, 1);
     },
   },
 });
 
-export const { updateBoardTitle, addNewBoard } = listSlice.actions;
+export const { updateBoardTitle, addNewBoard, removeBoard } = listSlice.actions;
 
 export default listSlice.reducer;

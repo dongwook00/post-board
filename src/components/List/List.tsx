@@ -2,7 +2,9 @@ import React from 'react';
 import classnames from 'classnames';
 import { useAppSelector, useAppDispatch } from '../../redux/hooks';
 import { selectBoard } from '../../redux/boardSlice';
-import { addNewBoard } from '../../redux/listSlice';
+import { addNewBoard, removeBoard } from '../../redux/listSlice';
+import Button from '../../components/Notes/Button';
+
 import styles from './List.module.scss';
 
 export const List: React.FC = () => {
@@ -18,11 +20,18 @@ export const List: React.FC = () => {
     dispatch(addNewBoard());
   };
 
+  const onBoardRemovalBtnClick = (targetId: number) => {
+    dispatch(removeBoard({ targetId }));
+  };
+
   return (
     <ul className={styles.items}>
       {list.map((item) => (
-        <li key={item.id} className={classnames({ [styles.active]: item.id === currentBoardId })} onClick={onListClick.bind(null, item.id)}>
-          {item.name}
+        <li key={item.id}>
+          <h5 className={classnames({ [styles.active]: item.id === currentBoardId })} onClick={onListClick.bind(null, item.id)}>
+            {item.name}
+          </h5>
+          <Button className="board-removal" text="삭제" onClick={() => onBoardRemovalBtnClick(item.id)} />
         </li>
       ))}
       <li onClick={onNewBoardCreateBtn}>+</li>
