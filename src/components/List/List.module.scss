@@ -4,11 +4,21 @@
     padding: 1rem;
     cursor: pointer;
 
+    &.active {
+      text-decoration: underline;
+      font-weight: 700;
+      pointer-events: none;
+    }
+
     &:last-of-type {
       list-style: none;
       font-size: 3rem;
       font-weight: 700;
       text-align: center;
+    }
+
+    &:hover {
+      text-decoration: underline;
     }
   }
 }
