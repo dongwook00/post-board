@@ -5,7 +5,7 @@ export interface NotesState {
   boardId?: number;
   title: string;
   content: string;
-  isFold: boolean;
+  isFold?: boolean;
 }
 
 const initialState: NotesState[] = [
@@ -29,7 +29,9 @@ export const notesSlice = createSlice({
       state.push({ id: newId, boardId: action.payload.currentBoardId, title: '새로운 노트', content: '', isFold: false });
     },
     editNote: (state, action: PayloadAction<NotesState>) => {
-      console.log('action', state, action);
+      const { id, title, content } = action.payload;
+      const targetIndex = state.findIndex((el) => el.id === id);
+      state[targetIndex] = { ...state[targetIndex], title, content };
     },
   },
 });

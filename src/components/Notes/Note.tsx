@@ -5,13 +5,13 @@ import Button from './Button';
 import { EditableTitle } from '../common';
 import NoteContent from './NoteContent';
 import { useAppDispatch } from '../../redux/hooks';
-import { toggleFoldingNote } from '../../redux/notesSlice';
+import { toggleFoldingNote, editNote } from '../../redux/notesSlice';
 
 interface NoteProps {
   noteId: number;
   title: string;
   content: string;
-  isFold: boolean;
+  isFold?: boolean;
 }
 
 const Note: React.FC<NoteProps> = (props) => {
@@ -30,8 +30,9 @@ const Note: React.FC<NoteProps> = (props) => {
     setContent(e.target.value);
   };
 
-  const onSave = (noteId: number) => {
-    console.log('onSave', noteId);
+  const onSave = (id: number) => {
+    const payload = { id, title, content };
+    dispatch(editNote(payload));
     setIsOnEdit(false);
   };
 
