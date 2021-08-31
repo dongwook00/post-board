@@ -22,7 +22,7 @@ const Title: React.FC = () => {
   };
 
   return (
-    <h2 className={styles.title}>
+    <h2 onClick={(e) => e.stopPropagation()} className={styles.title}>
       {list && <EditableTitle className="boardTitle" value={list.name} onChange={(e) => onBoardTitleChange(e, list.id)} />}
     </h2>
   );

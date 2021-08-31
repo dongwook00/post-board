@@ -24,12 +24,16 @@ export const notesSlice = createSlice({
       const targetIndex = state.findIndex((el) => el.id === action.payload.noteId);
       state[targetIndex].isFold = !state[targetIndex].isFold;
     },
+    addNewNote: (state, action: PayloadAction<{ currentBoardId: number }>) => {
+      const newId = state.length + 1;
+      state.push({ id: newId, boardId: action.payload.currentBoardId, title: '새로운 노트', content: '', isFold: false });
+    },
     editNote: (state, action: PayloadAction<NotesState>) => {
       console.log('action', state, action);
     },
   },
 });
 
-export const { editNote, toggleFoldingNote } = notesSlice.actions;
+export const { toggleFoldingNote, addNewNote, editNote } = notesSlice.actions;
 
 export default notesSlice.reducer;
