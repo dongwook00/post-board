@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import { useAppSelector, useAppDispatch } from '../../redux/hooks';
 import { removeNotesOnBoard } from '../../redux/notesSlice';
 import { selectBoard } from '../../redux/boardSlice';
-import { addNewBoard, removeBoard } from '../../redux/listSlice';
+import { addNewBoard, removeBoard, test } from '../../redux/listSlice';
 import { Button } from '../common';
 
 import styles from './List.module.scss';
@@ -15,6 +15,7 @@ export const List: React.FC = () => {
 
   const onListClick = (id: number) => {
     dispatch(selectBoard(id));
+    dispatch(test());
   };
 
   const onNewBoardCreateBtn = () => {
