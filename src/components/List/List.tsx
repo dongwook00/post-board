@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import { useAppSelector, useAppDispatch } from '../../redux/hooks';
 import { selectBoard } from '../../redux/boardSlice';
 import { addNewBoard, removeBoard } from '../../redux/listSlice';
-import Button from '../../components/Notes/Button';
+import { Button } from '../common';
 
 import styles from './List.module.scss';
 

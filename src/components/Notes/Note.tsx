@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import classnames from 'classnames';
 import styles from './Note.module.scss';
-import Button from './Button';
-import { EditableTitle } from '../common';
+import { Button, EditableTitle } from '../common';
 import NoteContent from './NoteContent';
 import { useAppDispatch } from '../../redux/hooks';
 import { toggleFoldingNote, editNote } from '../../redux/notesSlice';
