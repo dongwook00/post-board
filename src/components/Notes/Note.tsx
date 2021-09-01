@@ -47,7 +47,7 @@ const Note: React.FC<NoteProps> = (props) => {
   };
 
   return (
-    <div onClick={(e) => e.stopPropagation()} className={classnames(styles.note, 'note')}>
+    <div onClick={(e) => e.stopPropagation()} className={styles.note}>
       <div className={styles.title}>
         <EditableTitle className="noteTitle" value={title} onChange={onTitleChange} />
         <Button text={props.isFold ? '+' : '−'} onClick={() => onToggleFoldBtnClick(props.noteId)} />

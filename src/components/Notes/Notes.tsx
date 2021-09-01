@@ -13,6 +13,7 @@ const notesSelector = createSelector(
 
 const Notes: React.FC = () => {
   const notes = useAppSelector(notesSelector);
+
   return (
     <>
       {notes.map((note) => (
