@@ -25,7 +25,7 @@ export const notesSlice = createSlice({
       state[targetIndex].isFold = !state[targetIndex].isFold;
     },
     addNewNote: (state, action: PayloadAction<{ currentBoardId: number }>) => {
-      const newId = state.length + 1;
+      const newId = state.reduce((acc, curr) => (acc += curr.id), 1);
       state.push({ id: newId, boardId: action.payload.currentBoardId, title: '', content: '', isFold: false });
     },
     editNote: (state, action: PayloadAction<NotesState>) => {
@@ -37,9 +37,12 @@ export const notesSlice = createSlice({
       const targetIndex = state.findIndex((el) => el.id === action.payload.removalNoteId);
       state.splice(targetIndex, 1);
     },
+    removeNotesOnBoard: (state, action: PayloadAction<{ targetBoardId: number }>) => {
+      return state.filter((el) => el.boardId !== action.payload.targetBoardId);
+    },
   },
 });
 
-export const { toggleFoldingNote, addNewNote, editNote, removeNote } = notesSlice.actions;
+export const { toggleFoldingNote, addNewNote, editNote, removeNote, removeNotesOnBoard } = notesSlice.actions;
 
 export default notesSlice.reducer;

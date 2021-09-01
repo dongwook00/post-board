@@ -1,6 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import { useAppSelector, useAppDispatch } from '../../redux/hooks';
+import { removeNotesOnBoard } from '../../redux/notesSlice';
 import { selectBoard } from '../../redux/boardSlice';
 import { addNewBoard, removeBoard } from '../../redux/listSlice';
 import { Button } from '../common';
@@ -22,6 +23,7 @@ export const List: React.FC = () => {
 
   const onBoardRemovalBtnClick = (targetId: number) => {
     dispatch(removeBoard({ targetId }));
+    dispatch(removeNotesOnBoard({ targetBoardId: targetId }));
   };
 
   return (

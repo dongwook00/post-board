@@ -22,7 +22,7 @@ export const listSlice = createSlice({
       state[targetIndex].name = action.payload.name;
     },
     addNewBoard: (state) => {
-      const newId = state.length + 1;
+      const newId = state.reduce((acc, curr) => (acc += curr.id), 1);
       state.push({ id: newId, name: '새 보드' });
     },
     removeBoard: (state, action: PayloadAction<{ targetId: number }>) => {
