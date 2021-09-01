@@ -6,11 +6,13 @@ import { combineReducers } from 'redux';
 import listReducer from './listSlice';
 import notesReducer from './notesSlice';
 import boardReducer from './boardSlice';
+import dialogReducer from './dialogSlice';
 
 const reducers = combineReducers({
   list: listReducer,
   notes: notesReducer,
   board: boardReducer,
+  dialog: dialogReducer,
 });
 
 const persistConfig = {

@@ -1,3 +1,4 @@
 import EditableTitle from './EditableTitle';
+import Dialog from './Dialog';
 
-export { EditableTitle };
+export { EditableTitle, Dialog };

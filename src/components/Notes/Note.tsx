@@ -6,6 +6,7 @@ import { EditableTitle } from '../common';
 import NoteContent from './NoteContent';
 import { useAppDispatch } from '../../redux/hooks';
 import { toggleFoldingNote, editNote } from '../../redux/notesSlice';
+import { showDialog } from '../../redux/dialogSlice';
 
 interface NoteProps {
   noteId: number;
@@ -46,12 +47,16 @@ const Note: React.FC<NoteProps> = (props) => {
     dispatch(toggleFoldingNote({ noteId }));
   };
 
+  const onRemovalBtnClick = (noteId: number) => {
+    dispatch(showDialog({ removalNoteId: noteId }));
+  };
+
   return (
     <div onClick={(e) => e.stopPropagation()} className={styles.note}>
       <div className={styles.title}>
         <EditableTitle className="noteTitle" value={title} onChange={onTitleChange} />
         <Button text={props.isFold ? '+' : '−'} onClick={() => onToggleFoldBtnClick(props.noteId)} />
-        <Button text="⨯" />
+        <Button text="⨯" onClick={() => onRemovalBtnClick(props.noteId)} />
       </div>
       <div className={classnames(styles.content, { [styles.hide]: props.isFold })}>
         <NoteContent value={content} onChange={onContentChange} />
