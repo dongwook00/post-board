@@ -31,7 +31,7 @@ export const List: React.FC = () => {
           <h5 className={classnames({ [styles.active]: item.id === currentBoardId })} onClick={onListClick.bind(null, item.id)}>
             {item.name}
           </h5>
-          <Button className="board-removal" text="삭제" onClick={() => onBoardRemovalBtnClick(item.id)} />
+          <Button className="boardRemoval" text="삭제" onClick={() => onBoardRemovalBtnClick(item.id)} />
         </li>
       ))}
       <li onClick={onNewBoardCreateBtn}>+</li>

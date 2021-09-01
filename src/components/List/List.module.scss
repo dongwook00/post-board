@@ -4,9 +4,10 @@
     padding: 1rem;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     
     h5 {
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       font-weight: 400;
       cursor: pointer;
 
@@ -25,9 +26,11 @@
       display: block;
       list-style: none;
       font-size: 3rem;
-      font-weight: 700;
       text-align: center;
-      cursor: pointer;
+
+      &:hover {
+        font-weight: 700;
+      }
     }
   }
 }
