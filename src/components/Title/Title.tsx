@@ -1,8 +1,9 @@
+import { useEffect, useState } from 'react';
 import { createSelector } from 'reselect';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { EditableTitle } from '../common';
 import { RootState } from '../../redux/store';
-import { ListState, updateBoardTitle } from '../../redux/listSlice';
+import { ListState } from '../../redux/listSlice';
 import { BoardState } from '../../redux/boardSlice';
 import styles from './Title.module.scss';
 
@@ -13,17 +14,29 @@ const listSelector = createSelector(
 );
 
 const Title: React.FC = () => {
+  const [title, setTitle] = useState('');
+  const [targetId, setTargetId] = useState(-1);
   const dispatch = useAppDispatch();
   const list = useAppSelector(listSelector);
 
-  const onBoardTitleChange = (e: React.ChangeEvent<HTMLInputElement>, targetId: number) => {
-    const payload = { id: targetId, name: e.target.value };
-    dispatch(updateBoardTitle(payload));
+  useEffect(() => {
+    if (!list) return;
+
+    setTitle(list.name);
+    setTargetId(list.id);
+  }, [list]);
+
+  useEffect(() => {
+    dispatch({ type: 'list/updateBoardTitleBySaga', payload: { id: targetId, name: title } });
+  }, [title]);
+
+  const onBoardTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTitle(e.target.value);
   };
 
   return (
     <h2 onClick={(e) => e.stopPropagation()} className={styles.title}>
-      {list && <EditableTitle className="boardTitle" value={list.name} onChange={(e) => onBoardTitleChange(e, list.id)} />}
+      {list && <EditableTitle className="boardTitle" value={title} onChange={onBoardTitleChange} />}
     </h2>
   );
 };

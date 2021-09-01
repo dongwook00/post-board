@@ -29,12 +29,9 @@ export const listSlice = createSlice({
       const targetIndex = state.findIndex((el) => el.id === action.payload.targetId);
       state.splice(targetIndex, 1);
     },
-    test: (state) => {
-      console.log('list/test', state);
-    },
   },
 });
 
-export const { updateBoardTitle, addNewBoard, removeBoard, test } = listSlice.actions;
+export const { updateBoardTitle, addNewBoard, removeBoard } = listSlice.actions;
 
 export default listSlice.reducer;

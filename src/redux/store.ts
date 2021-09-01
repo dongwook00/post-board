@@ -25,10 +25,14 @@ const persistConfig = {
 const persistedReducer = persistReducer(persistConfig, reducers);
 
 const sagaMiddleware = createSagaMiddleware();
+const additionalMiddlewares = process.env.NODE_ENV === 'development' ? [sagaMiddleware, logger] : [sagaMiddleware];
+
 export const store = configureStore({
   reducer: persistedReducer,
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false, thunk: false }).concat([sagaMiddleware, logger]),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false, thunk: false }).concat(additionalMiddlewares),
 });
+
 sagaMiddleware.run(rootSaga);
+
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
