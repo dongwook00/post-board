@@ -8,13 +8,7 @@ export interface NotesState {
   isFold?: boolean;
 }
 
-const initialState: NotesState[] = [
-  { id: 0, boardId: 0, title: 'hello world', content: 'this is note from board 0', isFold: false },
-  { id: 1, boardId: 0, title: 'post it', content: 'this is note from board 1', isFold: false },
-  { id: 2, boardId: 1, title: 'hello world', content: 'this is note from board 0', isFold: false },
-  { id: 3, boardId: 1, title: 'hello world', content: 'this is note from board 0', isFold: false },
-  { id: 4, boardId: 2, title: 'hello world', content: 'this is note from board 0', isFold: false },
-];
+const initialState: NotesState[] = [{ id: 0, boardId: 0, title: '노트 제목입니다', content: '메모내용을 적어주세요', isFold: false }];
 
 export const notesSlice = createSlice({
   name: 'notes',

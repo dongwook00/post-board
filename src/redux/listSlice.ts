@@ -5,13 +5,7 @@ export interface ListState {
   name: string;
 }
 
-const initialState: ListState[] = [
-  { id: 0, name: 'list 1' },
-  { id: 1, name: 'list 2222' },
-  { id: 2, name: 'list 3' },
-  { id: 3, name: 'list 4' },
-  { id: 4, name: 'list 5' },
-];
+const initialState: ListState[] = [{ id: 0, name: '1번 보드!' }];
 
 export const listSlice = createSlice({
   name: 'list',
