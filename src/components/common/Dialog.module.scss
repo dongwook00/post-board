@@ -1,4 +1,4 @@
-.modalContainer {
+.dialogContainer {
   display: none;
   position: fixed;
   z-index: 1;
@@ -14,7 +14,7 @@
   }
 }
 
-.modalContent {
+.dialogContent {
   display: flex;
   justify-content: space-evenly;
   background-color: var(--color-dialog-content);

@@ -22,8 +22,8 @@ const Dialog: React.FC<DialogProps> = (props) => {
   };
 
   return (
-    <div onClick={(e) => e.stopPropagation()} className={classnames(styles.modalContainer, { [styles.show]: props.show })}>
-      <div className={styles.modalContent}>
+    <div onClick={(e) => e.stopPropagation()} className={classnames(styles.dialogContainer, { [styles.show]: props.show })}>
+      <div className={styles.dialogContent}>
         <div>
           <p>정말 삭제하시겠습니까?</p>
         </div>
