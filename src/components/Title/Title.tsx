@@ -35,9 +35,11 @@ const Title: React.FC = () => {
   };
 
   return (
-    <h2 onClick={(e) => e.stopPropagation()} className={styles.title}>
-      {list && <EditableTitle className="boardTitle" value={title} onChange={onBoardTitleChange} />}
-    </h2>
+    <div>
+      <h2 onClick={(e) => e.stopPropagation()} className={styles.title}>
+        {list && <EditableTitle className="boardTitle" value={title} onChange={onBoardTitleChange} />}
+      </h2>
+    </div>
   );
 };
 
